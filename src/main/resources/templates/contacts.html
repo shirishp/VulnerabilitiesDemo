@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contacts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        * {
+            font-family: 'DejaVu Sans Mono', monospace;
+            font-size: 20pt;
+        }
+
+        table, td, th {
+            border: dotted gray 1px;
+        }
+
+        .sql {
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+
+<form action="/contacts">
+    <fieldset>
+        <input type="text" name="name"/>
+        <input type="submit" value="Find Contact!"/>
+    </fieldset>
+</form>
+
+<hr/>
+
+<p th:unless="${sql} == null" th:utext="'SQL Query is --> ' + ${sql}" th:class="sql"/>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    <th:block th:each="contact : ${contacts}">
+        <tr>
+            <td th:text="${contact.name}">A</td>
+            <td th:text="${contact.email}">A</td>
+            <td th:text="${contact.contactNumber}">A</td>
+        </tr>
+    </th:block>
+</table>
+
+
+</body>
+</html>

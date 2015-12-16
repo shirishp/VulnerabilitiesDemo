@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greetings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        * {
+            font-family: 'DejaVu Sans Mono', monospace;
+            font-size: 20pt;
+        }
+
+        body {
+            padding-top: 30px;;
+        }
+
+        table, td {
+            border: dotted gray 1px;
+        }
+
+        .sql {
+            background-color: bisque;
+        }
+    </style>
+
+</head>
+<body>
+
+<form action="/greeting">
+    <fieldset>
+        <span>What is your name?</span>
+    </fieldset>
+    <fieldset>
+        <input type="text" name="name" size="40"/>
+        <input type="submit" value="Greet me!"/>
+    </fieldset>
+</form>
+
+<hr th:unless="${name} == null"/>
+
+<p th:unless="${name} == null" th:utext="'Hello, ' + ${name} + '!'"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
